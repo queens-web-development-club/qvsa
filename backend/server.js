@@ -6,6 +6,8 @@ User guide:
     and run "nodemon server.js"
 
     Connecting to the server: Open the URL "localhost:8000" in your browser.
+
+    Note: May need to host MongoDB locally? Or use free-tier cloud if possible (ideal).
  */
 const app = express();
 

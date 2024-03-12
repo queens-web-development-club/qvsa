@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TeamTable from "./TeamTable";
 import EventsTable from "./EventsTable";
 import { Button } from "@material-tailwind/react";
-import ButtonModal from "./ButtonModal";
+import TeamModal from "./TeamModal";
 import EventsModal from "./EventsModal";
 import NewModal from "./NewModal";
 
@@ -71,7 +71,7 @@ const AdminPanel = () => {
         />
       )}
       {showTeamModal && (
-        <ButtonModal
+        <TeamModal
           title="Add New"
           rowData={teamModalData}
           onClose={closeTeamModal}

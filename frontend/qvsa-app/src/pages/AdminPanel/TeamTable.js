@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Card, Typography, Button } from "@material-tailwind/react";
 import tempImage from "..//..//assets/memberProfile.jpg";
-import ButtonModal from "./ButtonModal";
+import TeamModal from "./TeamModal";
 
 const TABLE_HEAD = ["Image", "Name", "Role", ""];
 
@@ -146,7 +146,7 @@ const TeamTable = () => {
       </Card>
       {/* Edit Modal */}
       {editModalVisible && (
-        <ButtonModal
+        <TeamModal
           title="Edit"
           rowData={rowData}
           onClose={closeModal}
@@ -155,7 +155,7 @@ const TeamTable = () => {
       )}
       {/* Delete Modal */}
       {deleteModalVisible && (
-        <ButtonModal
+        <TeamModal
           title="Delete"
           rowData={rowData}
           onClose={closeModal}

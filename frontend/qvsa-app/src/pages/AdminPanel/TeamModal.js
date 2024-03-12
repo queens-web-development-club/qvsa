@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@material-tailwind/react";
 
-const ButtonModal = ({ title, rowData = {}, onClose, onSave, onDelete }) => {
+const TeamModal = ({ title, rowData = {}, onClose, onSave, onDelete }) => {
   const [name, setName] = React.useState(rowData.name || "");
   const [role, setRole] = React.useState(rowData.role || "");
   const [image, setImage] = React.useState(rowData.image || "");
@@ -84,4 +84,4 @@ const ButtonModal = ({ title, rowData = {}, onClose, onSave, onDelete }) => {
   );
 };
 
-export default ButtonModal;
+export default TeamModal;

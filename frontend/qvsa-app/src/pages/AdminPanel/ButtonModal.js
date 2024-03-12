@@ -1,10 +1,11 @@
-// ButtonModal.js
 import React from "react";
 import { Button } from "@material-tailwind/react";
 
-const ButtonModal = ({ title, rowData, onClose, onSave, onDelete }) => {
-  const [name, setName] = React.useState(rowData.name);
-  const [role, setRole] = React.useState(rowData.role);
+const ButtonModal = ({ title, rowData = {}, onClose, onSave, onDelete }) => {
+  const [name, setName] = React.useState(rowData.name || "");
+  const [role, setRole] = React.useState(rowData.role || "");
+  const [image, setImage] = React.useState(rowData.image || "");
+
 
   const handleSave = () => {
     onSave({ ...rowData, name, role });
@@ -43,6 +44,15 @@ const ButtonModal = ({ title, rowData, onClose, onSave, onDelete }) => {
                 className="w-full px-3 py-2 border rounded-lg focus:outline-none"
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
+              />
+              <label htmlFor="role" className="block mb-1 mt-2">
+                Image:
+              </label>
+              <input
+                id="image"
+                type="file"
+                className="w-full px-3 py-2 border rounded-lg focus:outline-none"
+                onChange={(e) => setImage(e.target.value)}
               />
             </>
           ) : (

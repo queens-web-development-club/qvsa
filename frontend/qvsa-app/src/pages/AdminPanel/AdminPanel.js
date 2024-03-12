@@ -4,13 +4,16 @@ import EventsTable from "./EventsTable";
 import { Button } from "@material-tailwind/react";
 import ButtonModal from "./ButtonModal";
 import EventsModal from "./EventsModal";
+import NewModal from "./NewModal";
 
 const AdminPanel = () => {
   const [showTeamModal, setShowTeamModal] = useState(false);
   const [showEventsModal, setShowEventsModal] = useState(false);
+  const [showNewModal, setShowNewModal] = useState(false);
 
   const [teamModalData, setTeamModalData] = useState({});
   const [eventsModalData, setEventsModalData] = useState({});
+  const [newRowData, setNewRowData] = useState({});
 
   const openTeamModal = (data) => {
     setShowTeamModal(true);
@@ -30,6 +33,14 @@ const AdminPanel = () => {
     setShowEventsModal(false);
   };
 
+  const openNewItemModal = (title) => {
+    setShowNewModal(title);
+  }; 
+
+  const closeNewItemModal = () => {
+    setShowNewModal(false);
+  };
+
   return (
     <div>
       <h1 className="text-xl font-bold text-center p-5">Admin Panel</h1>
@@ -37,7 +48,7 @@ const AdminPanel = () => {
         <div className="flex flex-row justify-between ">
           <h2 className="text-md font-semibold p-2">Team Data</h2>
           <div className="p-2">
-            <Button onClick={() => openTeamModal({})}>Add New</Button>
+            <Button onClick={() => openNewItemModal("Team")}>Add New</Button>
           </div>
         </div>
         <TeamTable openModal={openTeamModal} />
@@ -46,11 +57,19 @@ const AdminPanel = () => {
         <div className="flex flex-row justify-between">
           <h2 className="text-md font-semibold p-2">Events Data</h2>
           <div className="p-2">
-            <Button onClick={() => openEventsModal({})}>Add New</Button>
+            <Button onClick={() => openNewItemModal("Event")}>Add New</Button>
           </div>
         </div>
         <EventsTable openModal={openEventsModal} />
       </div>
+      {showNewModal && (
+        <NewModal
+          title={showNewModal}
+          rowData={{}}
+          onClose={closeNewItemModal}
+          handleSubmit={() => {console.log('submitted')}}
+        />
+      )}
       {showTeamModal && (
         <ButtonModal
           title="Add New"

@@ -3,3 +3,4 @@ export { default as ContactUs } from "./ContactUs/ContactUs";
 export { default as Events } from "./Events/Events";
 export { default as Home } from "./Home/Home";
 export { default as Team } from "./MeetTeam/Team";
+export { default as AdminPanel } from "./AdminPanel/AdminPanel";

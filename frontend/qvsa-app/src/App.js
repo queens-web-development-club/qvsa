@@ -15,7 +15,6 @@ function App() {
           <Route path="/meet-the-team" element={<Team />} />
         </Routes>
       </div>
-      
     </Router>
   );
 }

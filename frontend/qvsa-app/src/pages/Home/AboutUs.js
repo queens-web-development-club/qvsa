@@ -1,6 +1,14 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const AboutUs = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/about')
+  }
+  
   return (
     <div className="bg-cover bg-center bg-skyline min-h-screen flex items-center">
       <div className="bg-yellow bg-opacity-80 w-1/3 h-screen flex flex-col gap-2 justify-center items-center">
@@ -11,7 +19,10 @@ const AboutUs = () => {
           sit amet, consectetur adipiscing elit, sed do eiusmod tempor
           incididunt ut labore et dolore magna."
         </p>
-        <button className="bg-black text-off-white text-xl rounded-full px-7 py-2">Learn More</button>
+        <button className="bg-black text-off-white text-xl rounded-full px-7 py-2 flex flex-row items-center gap-2" onClick={handleClick}>
+          <p>Learn More</p>
+          <FaArrowRightLong />
+        </button>
       </div>
     </div>
   );

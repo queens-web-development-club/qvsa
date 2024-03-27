@@ -13,7 +13,7 @@ const MeetTheTeam = () => {
   return (
     <Parallax bgImage={skyline} strength={400}>
       <div className="min-h-screen flex items-center">
-        <div className="bg-yellow bg-opacity-80 w-1/3 h-screen flex flex-col gap-2 justify-center items-center">
+        <div className="bg-yellow bg-opacity-80 lg:w-1/3 md:w-3/5 h-screen flex flex-col gap-2 justify-center items-center">
           <h1 className="text-black font-bold text-6xl">Meet The</h1>
           <h1 className="text-black font-bold text-6xl">Team</h1>
           <p className="text-black text-center px-14 py-5">

@@ -13,7 +13,7 @@ const Events = () => {
   return (
     <Parallax bgImage={newyear} strength={400}>
     <div className="min-h-screen flex flex-row-reverse items-center">
-      <div className="bg-yellow bg-opacity-80 w-1/3 flex flex-col gap-2 justify-center items-center h-screen">
+      <div className="bg-yellow bg-opacity-80 lg:w-1/3 md:w-3/5 flex flex-col gap-2 justify-center items-center h-screen">
         <h1 className="text-black font-bold text-6xl">Events</h1>
         <p className="text-black text-center px-14 py-5">
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

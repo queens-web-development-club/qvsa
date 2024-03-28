@@ -23,11 +23,11 @@ const Navbar = () => {
         </li>
 
         <li className="border-b-4 border-transparent grow hover:border-[#FFB90B] transition duration-300 w-full md:w-auto">
-          <Link to="/meet-the-team"  className="flex px-6 py-3 md:px-10 md:py-6 w-full h-full justify-center">Meet the Team</Link>
+          <Link to="/meet-the-team"  className="flex px-6 py-3 md:px-10 md:py-6 w-full h-full justify-center hover:text-[#FFB90B] transition duration-300">Meet the Team</Link>
         </li>
 
         <li className="border-b-4 border-transparent grow hover:border-[#FFB90B] transition duration-300 w-full md:w-auto">
-          <Link to="/contact-us"  className="flex px-6 py-3 md:px-10 md:py-6 w-full h-full justify-center">Contact Us</Link>
+          <Link to="/contact-us"  className="flex px-6 py-3 md:px-10 md:py-6 w-full h-full justify-center hover:text-[#FFB90B] transition duration-300">Contact Us</Link>
         </li>
       </ul>
     </nav>

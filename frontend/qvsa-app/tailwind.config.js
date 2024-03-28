@@ -17,7 +17,8 @@ module.exports = withMT({
     backgroundImage: {
       "home-background": "url('/src/assets/execPhoto.jpg')",
       "skyline":"url('/src/assets/skyline.jpg')",
-      "newyear":"url('/src/assets/newyear.jpg')"
+      "newyear":"url('/src/assets/newyear.jpg')",
+      "citySky":"url('/src/assets/citySky.jpeg')",
     },
   },
   plugins: [],

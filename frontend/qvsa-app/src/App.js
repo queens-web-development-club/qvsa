@@ -1,10 +1,13 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { About, ContactUs, Events, Home, Team, AdminPanel } from "./pages";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <Router>
+      <Navbar />
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -15,6 +18,7 @@ function App() {
           <Route path="/meet-the-team" element={<Team />} />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 }

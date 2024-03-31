@@ -15,9 +15,10 @@ module.exports = withMT({
       },
     },
     backgroundImage: {
-      "home-background": "url('/src/assets/execPhoto.jpg')",
+      "home-background": "url('/src/assets/homeBackground.png')",
       "skyline":"url('/src/assets/skyline.jpg')",
       "newyear":"url('/src/assets/newyear.jpg')",
+      "citySky":"url('/src/assets/citySky.jpeg')",
       "skyline-header":"url('/src/assets/skylineHeader.jpg')"
     },
   },

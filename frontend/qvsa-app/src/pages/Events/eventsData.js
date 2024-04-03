@@ -53,7 +53,25 @@ export const allEventsData = [
         thumbnails: [newYear1, newYear2, newYear3, newYear4],
         year: "2023",
         month: "Feb"
-      }
+      },
+      {
+        title: "Tết, Vietnamese Lunar New Year",
+        description: "Tết, or Vietnamese Lunar New Year, is a vibrant and joyous celebration...",
+        images: [newYear1, newYear2, newYear3, newYear4],
+        currentIndex: 0,
+        thumbnails: [newYear1, newYear2, newYear3, newYear4],
+        year: "2023",
+        month: "Feb"
+      },   
+      {
+        title: "Tết, Vietnamese Lunar New Year",
+        description: "Tết, or Vietnamese Lunar New Year, is a vibrant and joyous celebration...",
+        images: [newYear1, newYear2, newYear3, newYear4],
+        currentIndex: 0,
+        thumbnails: [newYear1, newYear2, newYear3, newYear4],
+        year: "2023",
+        month: "Feb"
+      },
     // Add more events as needed
   ];
   

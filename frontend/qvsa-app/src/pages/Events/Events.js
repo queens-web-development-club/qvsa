@@ -1,4 +1,3 @@
-// EventList.js
 import React from 'react';
 import { allEventsData } from './eventsData';
 import EventCard from './EventCard';

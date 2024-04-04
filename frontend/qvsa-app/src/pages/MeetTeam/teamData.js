@@ -1,16 +1,14 @@
-import React from 'react';
-
-import Duy from './assets/Duy.jpg';
-import Kate from './assets/Kate.jpg';
-import Moon from './assets/Moon.jpg';
-import Irina from './assets/Irina.jpg';
-import Alana from './assets/Alana.jpg';
-import Alice from './assets/Alice.jpg';
-import Annika from './assets/Annika.jpg';
-import Jaime from './assets/Jaime.jpg';
-import Ethan from './assets/Ethan.jpg';
-import Kevin from './assets/Kevin.jpg';
-import Samantha from './assets/Samantha.jpg'
+import Duy from '..//..//assets/Duy.jpg';
+import Kate from '..//..//assets/Kate.jpg';
+import Moon from '..//..//assets/Moon.jpg';
+import Irina from '..//..//assets/Irina.jpg';
+import Alana from '..//..//assets/Alana.jpg';
+import Alice from '..//..//assets/Alice.jpg';
+import Annika from '..//..//assets/Annika.jpg';
+import Jaime from '..//..//assets/Jaime.jpg';
+import Ethan from '..//..//assets/Ethan.jpg';
+import Kevin from '..//..//assets/Kevin.jpg';
+import Samantha from '..//..//assets/Samantha.jpg';
 
 
 // index map: Team Lead 0, Marketing 1, Operations 2, Events 3

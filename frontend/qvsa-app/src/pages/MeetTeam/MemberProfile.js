@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MemberProfile = ({ src, alt, name, role }) => (
-    <div>
+    <div className='height-auto'>
         <div className="border-8 border-solid border-yellow bg-center bg-no-repeat" style={{ width: '250px', height: 'auto' }} >
             <img  img src={src} alt={alt} />
         </div>
@@ -14,4 +14,4 @@ const MemberProfile = ({ src, alt, name, role }) => (
     </div>
 );
 
-export default MemberProfile;s
+export default MemberProfile;

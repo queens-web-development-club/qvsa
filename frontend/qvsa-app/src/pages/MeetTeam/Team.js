@@ -1,37 +1,73 @@
 import React from 'react';
 
-import profiles from './teamData';
+// import profiles from './teamData';
 import MemberProfile from './MemberProfile';
 import Title from './title'
 
+import Duy from '..//..//assets/Duy.jpg';
+import Kate from '..//..//assets/Kate.jpg';
+import Moon from '..//..//assets/Moon.jpg';
+import Irina from '..//..//assets/Irina.jpg';
+import Alana from '..//..//assets/Alana.jpg';
+import Alice from '..//..//assets/Alice.jpg';
+import Annika from '..//..//assets/Annika.jpg';
+import Jaime from '..//..//assets/Jaime.jpg';
+import Ethan from '..//..//assets/Ethan.jpg';
+import Kevin from '..//..//assets/Kevin.jpg';
+import Samantha from '..//..//assets/Samantha.jpg';
+
+
 
 const Team = () => {
-  // Extracting unique group names from profiles
-  const uniqueGroups = [...new Set(profiles.map(profile => profile.group))];
+  // Create an object to store profiles grouped by group type
+  const groupedProfiles = {};
+  const profiles = [
+    { group: 'Team Lead', src: {Duy}, alt: 'Duy, President', name: 'Duy', role: 'President'}, 
+    { group: 'Team Lead', src: {Kate}, alt: 'Kate, Senior Advisor', name: 'Kate', role: 'Senior Advisor'},
+    { group: 'Marketing', src: {Irina}, alt: 'Irina, Marketing Director', name: 'Irina', role: 'Marketing Director' },
+    { group: 'Marketing', src: {Moon}, alt: 'Moon, Social Media Coordinator', name: 'Moon', role: 'Social Media Coordinator'},
+    { group: 'Marketing', src: {Alana}, alt: 'Alana, Graphics Coordinator', name: 'Alana', role:'Graphics Coordinator'},
+    { group: 'Operations', src: {Samantha}, alt: 'Samantha, Finance Director', name: 'Samantha', role: 'Finance Director'},
+    { group: 'Operations', src: {Ethan}, alt: 'Ethan, Outreach Coordinator', name: 'Ethan', role: 'Outreach Coordinator'},
+    { group: 'Operations', src: {Kevin}, alt: 'Kevin, Internal Coordinator', name: 'Kevin', role: 'Internal Coordinator'},
+    { group: 'Events', src: {Alice}, alt: 'Alice, Events Director', name: 'Alice', role: 'Events Director'},
+    { group: 'Events', src: {Annika}, alt: 'Annika, Events Coordinator', name: 'Annika', role: 'Events Coordinator'},
+    { group: 'Events', src: {Jaime}, alt: 'Jaime, Events Coordinator', name: 'Jaime', role: 'Events Coordinator'}
+]
+
+  for (let i = 0; i < profiles.length; i++) {
+      const profile = profiles[i];
+      if (! (profile.group in groupedProfiles)) {
+        groupedProfiles[profile.group] = []; // if its a new group, make new arr
+      }
+      groupedProfiles[profile.group].push(profile);
+      console.log(groupedProfiles)
+  }
+
 
   return (
-    <div className="bg-black">
+      <div className='mb-24'>
+          {/* Loop through each group type */}
+          {Object.keys(groupedProfiles).map(group => ( 
+              <div key={group}>
+                  <div className="p-10"/>
+                  <Title group ={group}/>
+                  <div className='flex flex-row justify-center items-center gap-20'>
 
-      {uniqueGroups.map((group, index) => (
-        <div key={index}>
-          <Title group={uniqueGroups.group} />
-          <div className="flex justify-center">
-            {profiles.map((profile, index) => (
-              profile.group === group && (
-                <React.Fragment key={index}>
-                  <MemberProfile src={profile.src} alt={profile.alt} name={profile.name} role={profile.role} />
-                  {/* Check if the current profile is the last one in its group */}
-                  {index < profiles.length - 1 && profile.group !== profiles[index + 1].group && <div style={{ marginBottom: '20px' }} />}
-                </React.Fragment>
-              )
-            ))}
-          </div>
-        </div>
-      ))}
-
-    </div>
+                    {/* Loop through profiles in the current group */}
+                    {groupedProfiles[group].map(profile => (
+                        <div key={profile.name} className='flex flex-row justify-center items-center'>
+                            {/* Render profile information */}
+                            <MemberProfile src={Object.values(profile.src)[0]} alt={profile.alt} name={profile.name} role={profile.role} />
+                        </div>
+                    ))}
+                  </div>
+            
+              </div>
+          ))}
+      </div>
   );
-}
+};
 
 
 export default Team;

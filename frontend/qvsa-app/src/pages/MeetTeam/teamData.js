@@ -1,9 +1,3 @@
-import React from 'react';
-
-// import profiles from './teamData';
-import MemberProfile from './MemberProfile';
-import Title from './title'
-
 import Duy from '..//..//assets/Duy.jpg';
 import Kate from '..//..//assets/Kate.jpg';
 import Moon from '..//..//assets/Moon.jpg';
@@ -17,11 +11,8 @@ import Kevin from '..//..//assets/Kevin.jpg';
 import Samantha from '..//..//assets/Samantha.jpg';
 
 
-
-const Team = () => {
-  // Create an object to store profiles grouped by group type
-  const groupedProfiles = {};
-  const profiles = [
+// index map: Team Lead 0, Marketing 1, Operations 2, Events 3
+const profiles = [
     { group: 'Team Lead', src: {Duy}, alt: 'Duy, President', name: 'Duy', role: 'President'}, 
     { group: 'Team Lead', src: {Kate}, alt: 'Kate, Senior Advisor', name: 'Kate', role: 'Senior Advisor'},
     { group: 'Marketing', src: {Irina}, alt: 'Irina, Marketing Director', name: 'Irina', role: 'Marketing Director' },
@@ -34,40 +25,6 @@ const Team = () => {
     { group: 'Events', src: {Annika}, alt: 'Annika, Events Coordinator', name: 'Annika', role: 'Events Coordinator'},
     { group: 'Events', src: {Jaime}, alt: 'Jaime, Events Coordinator', name: 'Jaime', role: 'Events Coordinator'}
 ]
+  
 
-  for (let i = 0; i < profiles.length; i++) {
-      const profile = profiles[i];
-      if (! (profile.group in groupedProfiles)) {
-        groupedProfiles[profile.group] = []; // if its a new group, make new arr
-      }
-      groupedProfiles[profile.group].push(profile);
-      console.log(groupedProfiles)
-  }
-
-
-  return (
-      <div className='mb-24'>
-          {/* Loop through each group type */}
-          {Object.keys(groupedProfiles).map(group => ( 
-              <div key={group}>
-                  <div className="p-10"/>
-                  <Title group ={group}/>
-                  <div className='flex flex-row justify-center items-center gap-20'>
-
-                    {/* Loop through profiles in the current group */}
-                    {groupedProfiles[group].map(profile => (
-                        <div key={profile.name} className='flex flex-row justify-center items-center'>
-                            {/* Render profile information */}
-                            <MemberProfile src={Object.values(profile.src)[0]} alt={profile.alt} name={profile.name} role={profile.role} />
-                        </div>
-                    ))}
-                  </div>
-            
-              </div>
-          ))}
-      </div>
-  );
-};
-
-
-export default Team;
+export default profiles;

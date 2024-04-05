@@ -1,5 +1,7 @@
-const express = require("express");
 require("dotenv").config();
+
+const express = require("express");
+const mongoose = require("mongoose");
 
 // express app
 const app = express();
@@ -19,7 +21,14 @@ app.use((req, res, next) => {
 app.use("/api/team", teamRoutes);
 app.use("/api/events", eventRoutes);
 
-// listen on port 8000
-app.listen(process.env.PORT, () => {
-   console.log("Listening on port 8000");
-});
+mongoose.connect(process.env["MONGO_URI"])
+    .then(() => {
+        // listen on port 8000
+        app.listen(process.env.PORT, () => {
+            console.log("Listening on port 8000");
+        });
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+

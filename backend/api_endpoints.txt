@@ -1,0 +1,17 @@
+API Endpoints
+
+GET /team → Get all team members.
+POST /team → Add new team member to the DB.
+
+GET /team/:id → Get team member with specified UUID attribute.
+PATCH /team/:id → Updates team member with specified UUID attribute.
+DELETE /team/:id → Deletes team member with specified UUID attribute.
+
+GET /events → Get all events.
+POST /events → Add new event to the DB.
+
+GET /events/:id → Get event with specified UUID attribute.
+PATCH /events/:id → Updates event with specified UUID attribute.
+DELETE /events/:id → Deletes event with specified UUID attribute.
+
+

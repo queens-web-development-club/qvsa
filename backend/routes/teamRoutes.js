@@ -1,25 +1,34 @@
 const express = require("express");
+const members = require("../models/MemberModel");
+const multer = require("multer");
+
+const {
+    createMember,
+    getMember,
+    getMembers,
+    deleteMember,
+    updateMember,
+    createProfilePic
+} = require("../controllers/MemberController");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    res.json("GET all team members");
-});
+// for file uploading
+const upload = multer({dest: "uploads"});
 
-router.get("/:id", (req, res) => {
-    res.json("GET single team member")
-});
+router.get("/", getMembers);
 
-router.post("/", (req, res) => {
-    res.json("POST single team member")
-});
+router.get("/:id", getMember);
 
-router.delete("/:id", (req, res) => {
-    res.json("DELETE single team member")
-});
+router.post("/", createMember);
 
-router.patch("/:id", (req, res) => {
-    res.json("PATCH single team member")
-});
+/*
+Note: The argument of upload.single() needs to be the key in the formdata.
+ */
+router.post("/pfp/:id", upload.single("file"), createProfilePic);
+
+router.delete("/:id", deleteMember);
+
+router.patch("/:id", updateMember);
 
 module.exports = router;

@@ -3,6 +3,7 @@ import React from 'react';
 // import profiles from './teamData';
 import MemberProfile from './MemberProfile';
 import Title from './title'
+import Header from "../../components/Header";
 
 import Duy from '..//..//assets/Duy.jpg';
 import Kate from '..//..//assets/Kate.jpg';
@@ -47,6 +48,7 @@ const Team = () => {
 
   return (
       <div className='mb-24'>
+        <Header title="Meet The Team" year="2024-2025" />
           {/* Loop through each group type */}
           {Object.keys(groupedProfiles).map(group => ( 
               <div key={group}>

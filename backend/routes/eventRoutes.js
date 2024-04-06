@@ -9,7 +9,8 @@ const {
     getEvents,
     createEvent,
     updateEvent,
-    deleteEvent
+    deleteEvent,
+    getEventFiles
 } = require("../controllers/EventController");
 
 const router = express.Router();
@@ -23,8 +24,7 @@ const storage = multer.diskStorage({
         Instead, always make sure to define files at the end of the form-data.
          */
 
-        const directoryID = uuid.v4().toString();
-        req.app.locals.directoryID = directoryID;
+        const directoryID = req.app.locals.directoryID;
 
         const dir = path.resolve(__dirname, "../data/team/", directoryID);
 
@@ -49,16 +49,31 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage});
 
+// Custom middleware
+function assignUUID(req, res, next) {
+    req.app.locals.directoryID = uuid.v4();
+
+    next();
+}
+
+// Routes
+
 router.get("/", getEvents);
 
 router.get("/:id", getEvent);
 
-// any() handles single or multiple files. woohoo!
-router.post("/", upload.any(), createEvent);
+/*
+ any() handles single or multiple files. woohoo!
+ also, we can define multiple middleware functions! (order-dependent). yay!
+ */
+
+router.post("/", assignUUID, upload.any(), createEvent);
 
 router.delete("/:id", deleteEvent);
 
 router.patch("/:id", updateEvent);
+
+router.get("/img/:id/:file", getEventFiles);
 
 // export the router.
 module.exports = router;

@@ -14,7 +14,15 @@ const {
 const router = express.Router();
 
 // for file uploading
-const upload = multer({dest: "uploads"});
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        console.log("received event " + req.body.title);
+
+      cb(null, "uploads/");
+    }
+});
+
+const upload = multer({dest: "uploads", storage: storage});
 
 router.get("/", getMembers);
 
@@ -25,7 +33,7 @@ router.post("/", createMember);
 /*
 Note: The argument of upload.single() needs to be the key in the formdata.
  */
-router.post("/pfp/:id", upload.single("file"), createProfilePic);
+router.post("/pfp/:id", upload.array("file"), createProfilePic);
 
 router.delete("/:id", deleteMember);
 

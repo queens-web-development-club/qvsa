@@ -9,7 +9,7 @@ const teamRoutes = require("./routes/teamRoutes");
 const eventRoutes = require("./routes/eventRoutes");
 
 // allows use for req.body as the JSON is parsed.
-app.use(express.json());
+//app.use(express.json());
 app.use((req, res, next) => {
 
     // handles middleware. must call next at the end.

@@ -102,8 +102,13 @@ const createProfilePic = async (req, res) => {
         return res.json(400).json({error: "No such ID!"});
     }*/
 
-    console.log(req.file);
+    // Note: req.files is used when multer uses upload.array, while req.file is used for upload.single
     console.log(req.body.data);
+
+    for (let file in req.files){
+        console.log("some file! " + file);
+
+    }
 
     res.status(200).json({message: "Received file"});
 

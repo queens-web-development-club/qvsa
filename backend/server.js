@@ -13,7 +13,6 @@ const eventRoutes = require("./routes/eventRoutes");
 app.use((req, res, next) => {
 
     // handles middleware. must call next at the end.
-    console.log(req.path, req.method);
     next();
 })
 

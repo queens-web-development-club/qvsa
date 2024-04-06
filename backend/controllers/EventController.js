@@ -60,12 +60,18 @@ const createEvent = async (req, res) => {
         return res.status(400).json("You must include 1+ images with this event!");
     }
 
+    // Get all files in the upload.
+    let files = [];
+    req.files.forEach((file) => {
+        files.push(file.originalname);
+    });
+
     const {title, dateYear, dateMonth, description} = req.body;
 
     const directoryID = req.app.locals.directoryID;
 
     try {
-        const event = await events.create({title, dateYear, dateMonth, description});
+        const event = await events.create({title, dateYear, dateMonth, description, files});
 
         let file = req.files[0];
 

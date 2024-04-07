@@ -11,6 +11,10 @@ const memberSchema = new Schema({
     role: {
         type: String,
         required: true,
+    },
+    fileName: {
+        type: String,
+        required: true
     }
     // timestamps tracks creation time and updating
 }, {timestamps: true});

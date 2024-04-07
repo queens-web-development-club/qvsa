@@ -1,5 +1,8 @@
 const members = require("../models/MemberModel");
 const mongoose = require("mongoose");
+const events = require("../models/EventModel");
+const path = require("path");
+const fs = require("fs");
 
 // Get all members
 
@@ -32,15 +35,19 @@ const getMember = async (req, res) => {
 // Add new member
 const createMember = async (req, res) => {
 
+    if (req.files.length !== 1) {
+        return res.status(400).json("You must include exactly 1 image with this request!");
+    }
+
     const {name, role} = req.body;
 
-    // TODO: handle file implementation
-
     try {
-        const member = await members.create({name, role});
-        res.status(200).json(member);
+        const file = req.files[0];
+        const fileName = file.filename;
 
-        console.log(member._id.toString());
+        const member = await members.create({name, role, fileName});
+
+        res.status(200).json(member);
     }
     catch (error) {
         res.status(400).json({error: error.message});
@@ -72,15 +79,13 @@ const updateMember = async (req, res) => {
         return res.status(400).json({error: "No such ID!"});
     }
 
-    const memberToUpdate = await members.findOneAndUpdate({_id: id},
-        {
-            // New member data (spread props into body). TODO: Add implementation for remaining stuff. Maybe re-create member object?
-
-            /*
-            Note: You don't need to update EVERYTHING. Just update what you want and that's all it will change :)
-             */
+    const memberToUpdate = await members.findOneAndUpdate({_id: id}, {
             ...req.body
-        });
+    });
+
+    if (req.files.length !== 0){
+        // update
+    }
 
     if (!memberToUpdate){
         res.status(400).json({error: "No such ID!"});
@@ -89,32 +94,27 @@ const updateMember = async (req, res) => {
     res.status(200).json(memberToUpdate);
 }
 
-/**
- * Work in progress - disregard for this commit.
- */
-
-const createProfilePic = async (req, res) => {
-    // Get id parameter.
+const getMemberFile = async(req, res) => {
     const {id} = req.params;
 
-    /*
-    if (!mongoose.Types.ObjectId.isValid(id)){
-        return res.json(400).json({error: "No such ID!"});
-    }*/
-
-    // Note: req.files is used when multer uses upload.array, while req.file is used for upload.single
-    console.log(req.body.data);
-
-    for (let file in req.files){
-        console.log("some file! " + file);
-
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({error: "Invalid ID!"});
     }
 
-    res.status(200).json({message: "Received file"});
+    const member = await members.findById(id);
 
+    if (!member) {
+        return res.status(400).json({error: "No member found with that ID!"});
+    }
 
-    // Some document exists with this ID, so we can safely link a pfp to it.
-    // TODO: Check bookmarks for easy posting of PFP with JSON data :)
+    let imgPath = path.join(__dirname, "../data/team", member.get("fileName"));
+
+    res.download(imgPath, (err) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({error: "Internal server error!"});
+        }
+    })
 }
 
 // Update member
@@ -125,5 +125,5 @@ module.exports = {
     createMember,
     deleteMember,
     updateMember,
-    createProfilePic
+    getMemberFile
 }

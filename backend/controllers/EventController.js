@@ -43,7 +43,7 @@ const getEventFiles = async (req, res) => {
         return res.status(400).json({error: "No event was found with that ID!"});
     }
 
-    let imgPath = path.join(__dirname, "../data/team/", id, file);
+    let imgPath = path.join(__dirname, "../data/events/", id, file);
 
     fs.readFile(imgPath, (err, fileData) => {
         if (err) {
@@ -76,9 +76,9 @@ const createEvent = async (req, res) => {
 
         let file = req.files[0];
 
-        const dataFolder = path.join(__dirname, "../data/team");
+        const dataFolder = path.join(__dirname, "../data/events");
 
-        const oldFolder = path.join(__dirname, "../data/team", directoryID);
+        const oldFolder = path.join(__dirname, "../data/events", directoryID);
 
         const newFolder = path.join(dataFolder, event._id.toString());
 
@@ -144,7 +144,7 @@ const deleteEvent = async (req, res) => {
      so this function should have something to delete.
      */
 
-    await fileUtil.deleteFile(path.join(__dirname, "../data/team/", id), (err) => {
+    await fileUtil.deleteFile(path.join(__dirname, "../data/events/", id), (err) => {
         if (err) {
             return res.status(500).json({error: "[DELETE event] Internal server error. Could not delete the folder!"});
         }

@@ -30,7 +30,7 @@ const storage = multer.diskStorage({
 
         const directoryID = req.app.locals.directoryID;
 
-        const dir = path.resolve(__dirname, "../data/team/", directoryID);
+        const dir = path.resolve(__dirname, "../data/events/", directoryID);
 
         // create directory for this upload. creates all necessary directories
         fs.mkdir(dir, {recursive: true}, (err) => {

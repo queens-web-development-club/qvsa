@@ -17,10 +17,9 @@ const MeetTheTeam = () => {
           <h1 className="text-black font-bold text-6xl">Meet The</h1>
           <h1 className="text-black font-bold text-6xl">Team</h1>
           <p className="text-black text-center px-14 py-5">
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna "Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna."
+            QVSA works to cultivate its members into capable, compassionate, and
+            strong leaders. Through volunteer work and the executive team, QVSA
+            offers chances for community leadership.
           </p>
           <button
             className="bg-black text-off-white text-xl rounded-full px-7 py-2 flex flex-row items-center gap-2"

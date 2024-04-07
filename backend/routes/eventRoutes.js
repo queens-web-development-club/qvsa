@@ -4,6 +4,10 @@ const uuid = require("uuid");
 const path = require("path");
 const fs = require("fs");
 
+const mongoose = require("mongoose");
+const events = require("../models/EventModel");
+const fileUtil = require("../util/FileUtil");
+
 const {
     getEvent,
     getEvents,
@@ -47,7 +51,37 @@ const storage = multer.diskStorage({
     }
 });
 
+const patchStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+
+        const id = req.params.id;
+
+        if (!mongoose.Types.ObjectId.isValid(id) || !events.findById(id)) {
+            cb(new Error("Cannot PATCH! There was no document found with that ID."));
+        }
+        else {
+            const dir = path.resolve(__dirname, "../data/team/", req.params.id);
+
+            // TODO: Test for PATCH to non-existent ID.
+            cb(null, dir);
+        }
+    },
+    filename: function (req, file, cb) {
+
+        cb(null, file.originalname);
+    },
+    fileFilter: function (req,file, cb) {
+        if (file.mimetype === "image/jpeg" || file.mime === "image/png"){
+            cb(null, true);
+        }
+        else {
+            cb(new Error("Invalid file type. Must be .jpg or .png"));
+        }
+    }
+})
+
 const upload = multer({storage: storage});
+const patch = multer({storage: patchStorage});
 
 // Custom middleware
 function assignUUID(req, res, next) {
@@ -71,7 +105,16 @@ router.post("/", assignUUID, upload.any(), createEvent);
 
 router.delete("/:id", deleteEvent);
 
-router.patch("/:id", updateEvent);
+router.patch("/:id", (req, res, next) => {
+    patch.any()(req, res, function(error) {
+        if (error) {
+            return res.status(500).json(error.toString());
+        }
+        else {
+            next();
+        }
+    });
+}, updateEvent);
 
 router.get("/img/:id/:file", getEventFiles);
 

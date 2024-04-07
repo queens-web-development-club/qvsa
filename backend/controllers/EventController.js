@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const fs = require("fs");
 const fsExtra = require("fs-extra");
+const fileUtil = require("../util/FileUtil");
 
 const multer = require("multer");
 const path = require("path");
@@ -95,6 +96,7 @@ const createEvent = async (req, res) => {
 }
 
 const updateEvent = async (req, res) => {
+
     const {id} = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -108,6 +110,16 @@ const updateEvent = async (req, res) => {
     if (!eventToUpdate) {
         // No event with that ID.
         return res.status(400).json({error: "No event found with that ID!"});
+    }
+
+
+    // Handle file changes. Note: You can only add extra files here, not delete them.
+    if (req.files.length !== 0) {
+        let files = eventToUpdate.get("files");
+
+        req.files.forEach(file => files.push(file.originalname));
+
+        eventToUpdate.set("files", files);
     }
 
     return res.status(200).json(eventToUpdate);
@@ -127,10 +139,22 @@ const deleteEvent = async (req, res) => {
         return res.status(400).json({error: "No event found with that ID!"});
     }
 
-    return res.status(200).json(eventToDelete);
-}
+    /*
+     Gets files to delete. Note that events should always contain 1+ images,
+     so this function should have something to delete.
+     */
 
+    await fileUtil.deleteFile(path.join(__dirname, "../data/team/", id), (err) => {
+        if (err) {
+            return res.status(500).json({error: "[DELETE event] Internal server error. Could not delete the folder!"});
+        }
+        else {
+            return res.status(200).json(eventToDelete);
+        }
+    });
+}
 // TODO: Add delete-all function.
+// TODO: Add deleteEventFile function to delete specific files. (this is a feature to polish it up)
 
 module.exports = {
     getEvents,

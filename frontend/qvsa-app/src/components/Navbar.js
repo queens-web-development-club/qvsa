@@ -28,9 +28,6 @@ const Navbar = () => {
            <Link to="/meet-the-team" className="flex px-6 py-3 md:px-10 md:py-6 w-full h-full justify-center hover:text-[#FFB90B] transition duration-200">Meet the Team</Link>
          </li>
 
-          <li className={`grow transition duration-300 w-full md:w-auto ${isActive("/contact-us")}`}>
-           <Link to="/contact-us" className="flex px-6 py-3 md:px-10 md:py-6 w-full h-full justify-center hover:text-[#FFB90B] transition duration-200">Contact Us</Link>
-         </li>
        </ul>
      </nav>
       <div className="pb-0 md:pb-16"> 

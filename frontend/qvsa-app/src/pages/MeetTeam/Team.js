@@ -42,7 +42,6 @@ const Team = () => {
         groupedProfiles[profile.group] = []; // if its a new group, make new arr
       }
       groupedProfiles[profile.group].push(profile);
-      console.log(groupedProfiles)
   }
 
 

@@ -14,15 +14,17 @@ const About = () => {
               Who Are We
             </h2>
             <p className="text-white text-center text-xl">
-              The Vietnamese Student Association (VSA) is a close-knit community
-              of students and enthusiasts dedicated to celebrating and sharing
-              the beauty of Vietnamese culture. We organize vibrant cultural
-              events, educational workshops, and social gatherings that not only
-              showcase our rich traditions but also create a welcoming space for
-              all. Our goal is to foster a sense of belonging and pride in our
-              heritage while promoting cultural diversity and understanding on
-              campus. Join us as we embark on a journey of discovery,
-              friendship, and cultural exchange!
+              Queen's Vietnamese Students' Association is an all inclusive
+              student organization. Our goal is to unite former students and
+              faculty members around Vietnamese tradition and culture. <br />
+              <br /> QVSA operates as a nonprofit. All available funds will go
+              toward improving our members' experiences all year long. Our funds
+              are used to support a wide range of our activities and
+              initiatives. Activities, materials, and advertising for events
+              like Mid-Autumn Festival, Halloween Party, and Tet Celebration
+              will all be improved. Future generations will benefit from these
+              initiatives as they support and preserve Canada's unique
+              Vietnamese culture.
             </p>
             <img
               src={GroupPic}
@@ -36,40 +38,28 @@ const About = () => {
 
         <div className="flex flex-col justify-center items-center gap-12">
           <div className="w-4/6">
-            <h2 className=" text-3xl text-white font-bold text-center mt-4">
+            <h2 className=" text-3xl text-white font-bold text-center mt-4 mb-12">
               Our Mission Statement
             </h2>
 
-            <div className="text-white text-center text-xl flex flex-col justify-center items-center gap-9">
+            <div className="text-white text-center text-xl flex flex-col justify-center items-center gap-12">
               <p>
-                The Vietnamese Student Association (VSA) serves as a cultural
-                hub and support network for Vietnamese students studying abroad.
-                It provides a sense of home away from home, offering a familiar
-                environment where students can celebrate their heritage, share
-                experiences, and build lifelong friendships. The VSA also plays
-                a vital role in promoting cross-cultural understanding and
-                appreciation, organizing events that showcase Vietnamese
-                traditions, arts, and cuisine to the broader student body and
-                local community.
+                It is our goal to foster an awareness and appreciation of the
+                rich Vietnamese-Canadian culture through our community outreach,
+                volunteer opportunities, and events. Furthermore, we hope that
+                the Vietnamese-Canadian community that has grown around QVSA
+                will support them as they explore their own identities and
+                discover what it means to be Vietnamese. QVSA works to develop
+                our cultural origins and maintain our Vietnamese social norms to
+                strengthen our cultural roots.
               </p>
               <p>
-                One of the key objectives of the VSA is to support its members
-                academically and professionally. Through mentorship programs,
-                career workshops, and networking events, the VSA helps students
-                navigate the challenges of university life and prepare for their
-                future careers. Additionally, the VSA often collaborates with
-                other student organizations and community groups to create
-                meaningful initiatives that address social issues and promote
-                positive change.
-              </p>
-              <p>
-                Overall, the Vietnamese Student Association is a dynamic and
-                inclusive organization that enriches the university experience
-                for its members and contributes to the cultural diversity of the
-                campus community. Through its various activities and
-                initiatives, the VSA continues to foster a sense of pride in
-                Vietnamese heritage and a spirit of unity among students from
-                diverse backgrounds.
+                Additionally, QVSA works to cultivate its members into capable,
+                compassionate, and strong leaders. Through volunteer work and
+                the executive team, QVSA offers chances for community
+                leadership. Members can pick up useful soft skills like cohesive
+                teamwork, resource management, and event organizing through
+                these possibilities.
               </p>
               <img src={Logo} alt="Logo" className="size-3/6 gap-y-1 mb-20" />
             </div>

@@ -4,7 +4,7 @@ const Header = ({ title, year }) => {
   return (
     <div className="relative h-48">
       {/* Background image */}
-      <div className="absolute inset-0 bg-cover bg-center bg-skyline-header opacity-50"></div>
+      <div className="absolute inset-0 bg-cover bg-center bg-skyline-header opacity-50 -mt-2"></div>
       
       {/* Content */}
       <div className="relative h-full flex flex-col justify-center items-center">

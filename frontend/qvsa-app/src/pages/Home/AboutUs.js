@@ -13,7 +13,8 @@ const AboutUs = () => {
 
   return (
     <Parallax bgImage={city} strength={400}>
-      <div className="bg-yellow bg-opacity-80 lg:w-1/3 md:w-3/5 h-screen flex flex-col gap-2 justify-center items-center">
+   
+      <div className="bg-yellow bg-opacity-80 lg:w-1/3 md:w-3/5 h-screen flex flex-col gap-2 justify-center items-center ">
         <h1 className="text-black font-bold text-6xl">About Us</h1>
         <p className="text-black text-center px-14 py-5">
           Queen's Vietnamese Students' Association is an all inclusive student
@@ -29,6 +30,7 @@ const AboutUs = () => {
         </button>
       </div>
     </Parallax>
+
   );
 };
 

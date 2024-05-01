@@ -22,19 +22,8 @@ import Samantha from '..//..//assets/Samantha.jpg';
 const Team = () => {
   // Create an object to store profiles grouped by group type
   const groupedProfiles = {};
-  const profiles = [
-    { group: 'Team Lead', src: {Duy}, alt: 'Duy, President', name: 'Duy', role: 'President'}, 
-    { group: 'Team Lead', src: {Kate}, alt: 'Kate, Senior Advisor', name: 'Kate', role: 'Senior Advisor'},
-    { group: 'Marketing', src: {Irina}, alt: 'Irina, Marketing Director', name: 'Irina', role: 'Marketing Director' },
-    { group: 'Marketing', src: {Moon}, alt: 'Moon, Social Media Coordinator', name: 'Moon', role: 'Social Media Coordinator'},
-    { group: 'Marketing', src: {Alana}, alt: 'Alana, Graphics Coordinator', name: 'Alana', role:'Graphics Coordinator'},
-    { group: 'Operations', src: {Samantha}, alt: 'Samantha, Finance Director', name: 'Samantha', role: 'Finance Director'},
-    { group: 'Operations', src: {Ethan}, alt: 'Ethan, Outreach Coordinator', name: 'Ethan', role: 'Outreach Coordinator'},
-    { group: 'Operations', src: {Kevin}, alt: 'Kevin, Internal Coordinator', name: 'Kevin', role: 'Internal Coordinator'},
-    { group: 'Events', src: {Alice}, alt: 'Alice, Events Director', name: 'Alice', role: 'Events Director'},
-    { group: 'Events', src: {Annika}, alt: 'Annika, Events Coordinator', name: 'Annika', role: 'Events Coordinator'},
-    { group: 'Events', src: {Jaime}, alt: 'Jaime, Events Coordinator', name: 'Jaime', role: 'Events Coordinator'}
-]
+  const profiles = fetch("http://localhost:8000/api/team").then((res) => resizeTo.json()).then((data) => console.log(data)); // gets all team data 
+
 
   for (let i = 0; i < profiles.length; i++) {
       const profile = profiles[i];
@@ -49,10 +38,10 @@ const Team = () => {
       <div className='mb-24'>
         <Header title="Meet The Team" year="2024-2025" />
           {/* Loop through each group type */}
-          {Object.keys(groupedProfiles).map(group => ( 
+          {Object.keys(groupedProfiles).map(group => ( // mapping through each group type
               <div key={group}>
                   <div className="p-10"/>
-                  <Title group ={group}/>
+                  <Title group ={group}/>  {/* displaying group title */}
                   <div className='flex flex-row justify-center items-center gap-20'>
 
                     {/* Loop through profiles in the current group */}

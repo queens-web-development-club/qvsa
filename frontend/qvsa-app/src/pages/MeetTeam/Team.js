@@ -10,6 +10,7 @@ const Team = () => {
 
   const groupedProfiles = {};   // Create an object to store profiles grouped by group type
 
+  // Get all the data and group them based on their group field
   fetch('http://localhost:8000/api/team')
   .then(res => res.json())
   .then(data => {    // Handle json received data

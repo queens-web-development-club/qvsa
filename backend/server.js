@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 
 /*
 User guide:
@@ -9,7 +10,11 @@ User guide:
 
     Note: May need to host MongoDB locally? Or use free-tier cloud if possible (ideal).
  */
+
 const app = express();
+
+// Enable CORS for all routes
+app.use(cors()); 
 
 app.get("/", (req, res) => {
     res.send("Connected to server. Welcome to the QVSA server!");

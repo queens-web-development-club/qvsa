@@ -65,7 +65,7 @@ const EventsTable = () => {
 
   return (
     <>
-      <Card className="h-full w-full overflow-scroll">
+      <Card className="h-full w-full overflow-scroll text-black">
         <table className="w-full min-w-max table-auto text-left">
           {/* Table header */}
           <thead>

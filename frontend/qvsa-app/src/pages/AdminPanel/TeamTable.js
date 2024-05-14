@@ -68,7 +68,7 @@ const TeamTable = () => {
 
   return (
     <>
-      <Card className="h-full w-5/8 overflow-scroll">
+      <Card className="h-full w-5/8 overflow-scroll text-black">
         <table className="w-full min-w-max table-auto text-left">
           {/* Table header */}
           <thead>

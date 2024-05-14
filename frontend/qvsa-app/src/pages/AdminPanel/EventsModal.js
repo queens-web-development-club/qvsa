@@ -3,9 +3,9 @@ import React from "react";
 import { Button } from "@material-tailwind/react";
 
 const EventsModal = ({ title, rowData, onClose, onSave, onDelete }) => {
-  const [eventName, setEventName] = React.useState(rowData.eventName);
-  const [eventDescription, setEventDescription] = React.useState(rowData.eventDescription);
-  const [yearMonth, setYearMonth] = React.useState(rowData.yearMonth);
+  const [eventName, setEventName] = React.useState(rowData.title);
+  const [eventDescription, setEventDescription] = React.useState(rowData.description);
+  const [yearMonth, setYearMonth] = React.useState((rowData.dateYear + ' ' +rowData.dateMonth));
 
   const handleSave = () => {
     onSave({

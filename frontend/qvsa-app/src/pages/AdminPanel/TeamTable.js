@@ -39,17 +39,59 @@ const TeamTable = () => {
     setDeleteModalVisible(false);
   };
 
-  const handleEdit = (newData) => {
-    // Implement logic to save edited data
-    console.log("Edited data:", newData);
+  const handleEdit = async (newData) => {
+    try {
+      // Make an HTTP PATCH request to update the row
+      const response = await fetch(`http://localhost:8000/api/team/${newData._id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newData)
+      });
+  
+      if (response.ok) {
+        console.log("Row updated successfully.");
+        // Update the data in your frontend after successful update
+        fetchData();
+      } else {
+        console.error("Failed to update row.");
+      }
+    } catch (error) {
+      console.error("Error updating row:", error);
+    }
+  
+    closeModal();
+  };
+  
+
+  const handleDelete = async () => {
+    try {
+      // Make an HTTP DELETE request to delete the row
+      const response = await fetch(`http://localhost:8000/api/team/${rowData._id}`, {
+        method: 'DELETE'
+      });
+  
+      if (response.ok) {
+        console.log("Row deleted successfully.");
+        // Update the data in your frontend after successful deletion
+        fetchData();
+      } else {
+        console.error("Failed to delete row.");
+      }
+    } catch (error) {
+      console.error("Error deleting row:", error);
+    }
+  
     closeModal();
   };
 
-  const handleDelete = () => {
-    // Implement logic to delete the row
-    console.log("Deleting row:", rowData);
-    closeModal();
-  };
+  
+  // const handleDelete = () => {
+  //   // Implement logic to delete the row
+  //   console.log("Deleting row:", rowData);
+  //   closeModal();
+  // };
 
   return (
     <>

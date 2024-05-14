@@ -44,22 +44,50 @@ const EventsTable = () => {
     setShowModal(false);
   };
 
-  const handleSave = (newData) => {
-    // Update row data with new values
-    const updatedRows = eventsData.map((row) =>
-      row._id === newData._id ? newData : row
-    );
-    console.log("Updated rows:", updatedRows);
-    // update the state or send the updated data to an API
+  const handleSave = async (newData) => {
+    try {
+      // Make an HTTP PATCH request to update the row
+      const response = await fetch(`http://localhost:8000/api/events/${newData._id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newData)
+      });
+  
+      if (response.ok) {
+        console.log("Row updated successfully.");
+        // Update the data in your frontend after successful update
+        fetchEventsData();
+      } else {
+        console.error("Failed to update row.");
+      }
+    } catch (error) {
+      console.error("Error updating row:", error);
+    }
+  
     closeModal();
   };
-
-  const handleDelete = (row) => {
-    // Implement logic to delete the row
-    console.log("Deleting row:", row);
+  const handleDelete = async () => {
+    try {
+      // Make an HTTP DELETE request to delete the row
+      const response = await fetch(`http://localhost:8000/api/events/${rowData._id}`, {
+        method: 'DELETE'
+      });
+  
+      if (response.ok) {
+        console.log("Row deleted successfully.");
+        // Update the data in your frontend after successful deletion
+        fetchEventsData();
+      } else {
+        console.error("Failed to delete row.");
+      }
+    } catch (error) {
+      console.error("Error deleting row:", error);
+    }
+  
     closeModal();
   };
-
   return (
     <>
       <Card className="h-full w-full overflow-scroll text-black">

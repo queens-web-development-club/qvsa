@@ -1,5 +1,5 @@
 // EventsTable.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Typography, Button } from "@material-tailwind/react";
 import EventsModal from "./EventsModal";
 
@@ -11,31 +11,28 @@ const TABLE_HEAD = [
   "",
 ];
 
-const TABLE_ROWS = [
-  {
-    eventName: "Event 1",
-    eventDescription: "Description for Event 1",
-    yearMonth: "2024 March",
-    images: ["image1.jpg", "image2.jpg", "image3.jpg"],
-  },
-  {
-    eventName: "Event 2",
-    eventDescription: "Description for Event 2",
-    yearMonth: "2024 April",
-    images: ["image4.jpg", "image5.jpg"],
-  },
-  {
-    eventName: "Event 3",
-    eventDescription: "Description for Event 3",
-    yearMonth: "2024 May",
-    images: ["image6.jpg", "image7.jpg", "image8.jpg"],
-  },
-];
-
 const EventsTable = () => {
   const [showModal, setShowModal] = useState(false);
   const [rowData, setRowData] = useState(null);
   const [modalType, setModalType] = useState(null);
+  const [eventsData, setEventsData] = useState([]);
+
+  useEffect(() => {
+    fetchEventsData();
+  }, []);
+
+  const fetchEventsData = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/events");
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      const data = await response.json();
+      setEventsData(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const openModal = (data, type) => {
     setShowModal(true);
@@ -49,8 +46,8 @@ const EventsTable = () => {
 
   const handleSave = (newData) => {
     // Update row data with new values
-    const updatedRows = TABLE_ROWS.map((row) =>
-      row.eventName === newData.eventName ? newData : row
+    const updatedRows = eventsData.map((row) =>
+      row._id === newData._id ? newData : row
     );
     console.log("Updated rows:", updatedRows);
     // update the state or send the updated data to an API
@@ -65,7 +62,7 @@ const EventsTable = () => {
 
   return (
     <>
-      <Card className="h-full w-full overflow-scroll">
+      <Card className="h-full w-full overflow-scroll text-black">
         <table className="w-full min-w-max table-auto text-left">
           {/* Table header */}
           <thead>
@@ -88,9 +85,9 @@ const EventsTable = () => {
           </thead>
           {/* Table body */}
           <tbody>
-            {TABLE_ROWS.map((row, index) => (
+            {eventsData.map((row, index) => (
               <tr
-                key={row.eventName}
+                key={row._id}
                 className={index % 2 === 0 ? "bg-blue-gray-50/50" : ""}
               >
                 <td className="p-4">
@@ -99,7 +96,7 @@ const EventsTable = () => {
                     color="blue-gray"
                     className="font-normal"
                   >
-                    {row.eventName}
+                    {row.title}
                   </Typography>
                 </td>
                 <td className="p-4">
@@ -108,7 +105,7 @@ const EventsTable = () => {
                     color="blue-gray"
                     className="font-normal"
                   >
-                    {row.eventDescription}
+                    {row.description}
                   </Typography>
                 </td>
                 <td className="p-4">
@@ -117,18 +114,11 @@ const EventsTable = () => {
                     color="blue-gray"
                     className="font-normal"
                   >
-                    {row.yearMonth}
+                    {`${row.dateYear} ${row.dateMonth}`}
                   </Typography>
                 </td>
                 <td className="p-4">
-                  {row.images.map((image, i) => (
-                    <img
-                      key={i}
-                      src={image}
-                      alt={`Image ${i}`}
-                      className="w-12 h-12 rounded-full mr-2"
-                    />
-                  ))}
+                  {/* Render images */}
                 </td>
                 <td className="p-4">
                   <div className="flex flex-row gap-3">

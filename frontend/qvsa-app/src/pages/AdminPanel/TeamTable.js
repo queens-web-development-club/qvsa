@@ -1,43 +1,28 @@
-// TeamTable.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Typography, Button } from "@material-tailwind/react";
-import tempImage from "..//..//assets/memberProfile.jpg";
 import TeamModal from "./TeamModal";
 
-const TABLE_HEAD = ["Image", "Name", "Role", ""];
-
-const TABLE_ROWS = [
-  {
-    image: tempImage,
-    name: "John Michael",
-    role: "Director",
-  },
-  {
-    image: tempImage,
-    name: "Alexa Liras",
-    role: "Co-Director",
-  },
-  {
-    image: tempImage,
-    name: "Laurent Perrier",
-    role: "Executive",
-  },
-  {
-    image: tempImage,
-    name: "Michael Levi",
-    role: "Events",
-  },
-  {
-    image: tempImage,
-    name: "Richard Gran",
-    role: "Events",
-  },
-];
+const TABLE_HEAD = ["Name", "Role", ""];
 
 const TeamTable = () => {
+  const [data, setData] = useState([]);
   const [editModalVisible, setEditModalVisible] = useState(false);
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
   const [rowData, setRowData] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/team");
+      const jsonData = await response.json();
+      setData(jsonData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const openEditModal = (data) => {
     setEditModalVisible(true);
@@ -68,7 +53,7 @@ const TeamTable = () => {
 
   return (
     <>
-      <Card className="h-full w-5/8 overflow-scroll">
+      <Card className="h-full w-5/8 overflow-scroll text-black">
         <table className="w-full min-w-max table-auto text-left">
           {/* Table header */}
           <thead>
@@ -91,18 +76,11 @@ const TeamTable = () => {
           </thead>
           {/* Table body */}
           <tbody>
-            {TABLE_ROWS.map((row, index) => (
+            {data.map((row, index) => (
               <tr
-                key={row.name}
+                key={row._id}
                 className={index % 2 === 0 ? "bg-blue-gray-50/50" : ""}
               >
-                <td className="p-4">
-                  <img
-                    src={row.image}
-                    alt="Profile"
-                    className="w-12 h-12 rounded-full"
-                  />
-                </td>
                 <td className="p-4">
                   <Typography
                     variant="small"

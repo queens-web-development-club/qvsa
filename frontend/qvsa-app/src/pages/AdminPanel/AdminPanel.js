@@ -43,7 +43,7 @@ const AdminPanel = () => {
 
   return (
     <div>
-      <h1 className="text-xl font-bold text-center p-5">Admin Panel</h1>
+      <h1 className="text-xl font-bold text-center text-black p-5 ">Admin Panel</h1>
       <div className="flex flex-col px-10 py-2">
         <div className="flex flex-row justify-between ">
           <h2 className="text-md font-semibold p-2">Team Data</h2>

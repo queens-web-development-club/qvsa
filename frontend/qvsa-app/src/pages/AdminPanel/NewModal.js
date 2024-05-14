@@ -17,7 +17,7 @@ const NewModal = ({ title, rowData, onClose, handleSubmit }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-filter backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-filter backdrop-blur-sm text-black">
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="relative bg-white w-2/5 min-w-[40%] max-w-[40%] rounded-lg shadow-lg p-4">
         <div className="text-2xl font-semibold mb-4">Add a new {title}</div>

@@ -8,12 +8,12 @@ import Header from "../../components/Header";
 
 const Team = () => {
 
-  const groupedProfiles = {};   // Create an object to store profiles grouped by group type
+  const groupedProfiles = {};   // object to store profiles grouped by group type
 
   // Get all the data and group them based on their group field
   fetch('http://localhost:8000/api/team')
   .then(res => res.json())
-  .then(data => {    // Handle json received data
+  .then(data => {   
     console.log(data);
 
     // This loop groups profiles based on the data
@@ -24,7 +24,7 @@ const Team = () => {
       }
       groupedProfiles[profile.group].push(profile);
     }
-    renderTeam(groupedProfiles);   // Render component with groupedProfiles
+    renderTeam(groupedProfiles);   
   })
 
   .catch(error => {   // Handle errors 
@@ -41,17 +41,21 @@ const Team = () => {
               <div key={group}>
                   <div className="p-10"/>
                   <Title group ={group}/>  {/* displaying group title */}
-                  <div className='flex flex-row justify-center items-center gap-20'>
-
+                  
+                  <div className="flex flex-col md:flex-row flex-wrap justify-center items-center gap-10 md:gap-20"> {/* mobile compatibility */}
                     {/* Loop through profiles in the current group */}
                     {groupedProfiles[group].map(profile => (
-                        <div key={profile.name} className='flex flex-row justify-center items-center'>
+                        <div key={profile.name} className="flex flex-col items-center"> {/* mobile compatibility */}
                             {/* Render profile information */}
-                            <MemberProfile src={Object.values(profile.src)[0]} alt={profile.alt} name={profile.name} role={profile.role} />
+                            <MemberProfile
+                              src={Object.values(profile.src)[0]}
+                              alt={profile.alt}
+                              name={profile.name}
+                              role={profile.role}
+                            />
                         </div>
                     ))}
                   </div>
-            
               </div>
           ))}
       </div>

@@ -11,7 +11,7 @@ const EventCard = ({ data }) => {
 
   return (
     <div className="flex flex-col md:flex-row border-t-2 border-white ml-2 md:ml-12 justify-center md:justify-end mb-6 w-auto">
-      <div className="w-full md:w-4/12 p-4">
+      <div className="w-full md:w-8/12 p-4">
         <h1 className="font-Inter font-bold text-[#F2F2F2] text-4xl m-4 text-center md:text-right md:pl-3 md:break-words">
           <span className="text-[#FFB90B] md:hidden block md:hyphens-manual">
             {" "}
@@ -24,12 +24,12 @@ const EventCard = ({ data }) => {
         </p>
       </div>
 
-      <div className="mb-4 p-6 pb-16 w-full md:w-auto">
-        <div className="w-full md:w-[50vw] h-[50vh] overflow-hidden mx-auto">
+      <div className="mb-4 p-6 pb-16 md:w-auto">
+        <div className="overflow-hidden">
           <img
             src={images[currentIndex]}
             alt={`Image ${currentIndex + 1}`}
-            className="w-full h-full object-cover border-4 border-[#FFB90B]"
+            className="w-3/4 h-3/4 object-cover border-4 border-[#FFB90B]"
           />
         </div>
 
@@ -52,7 +52,7 @@ const EventCard = ({ data }) => {
                 <img
                   src={thumbnail}
                   alt={`Thumbnail ${index + 1}`}
-                  className="w-28 h-28 object-cover"
+                  className="w-28 h-28 object-cover aspect-square"
                 />
               </a>
             ))}
